@@ -2,6 +2,7 @@ import { BoltIcon, ExclamationTriangleIcon, SunIcon } from "@heroicons/react/24/
 
 export default function Home() {
   return (
+
     <div className="flex flex-col items-center justify-center h-screen text-white">
       <h1 className="text-2xl md:text-5xl font-bold mb-2 md:mb-20">ChatGPT </h1>
       <div className="flex space-x-4 space-y-[40px] md:space-y-0 text-center flex-wrap md:flex-nowrap overflow-auto ">
