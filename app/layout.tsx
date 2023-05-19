@@ -1,4 +1,5 @@
 import './globals.css'
+
 import { Inter } from 'next/font/google'
 import Sidebar from '@/components/Sidebar'
 import SessionProvider from '@/components/SessionProvider'
@@ -6,6 +7,8 @@ import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import Login from '@/components/Login'
 import ClientProvider from '@/components/ClientProvider'
+import { Bars3Icon } from '@heroicons/react/24/solid'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -20,6 +23,8 @@ export default async function RootLayout({
 }) {
   const session = await getServerSession(authOptions)
 
+
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -28,17 +33,20 @@ export default async function RootLayout({
             !session ? (
               <Login />
             ) : (
-              <div className="flex">
+              <div>
 
-                <div className="bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-w-[20rem]">
-                  <Sidebar />
+                <div className="flex">
+
+                  <div className="bg-[#202123] max-w-xs h-screen md:overflow-y-auto md:min-w-[20rem]" >
+                    <Sidebar />
+                  </div>
+
+                  <ClientProvider />
+                  <div className="bg-[#343541] flex-1">
+                    {children}
+                  </div>
+
                 </div>
-
-                <ClientProvider />
-                <div className="bg-[#343541] flex-1">
-                  {children}
-                </div>
-
               </div>
             )
           }
@@ -47,6 +55,6 @@ export default async function RootLayout({
         </SessionProvider>
 
       </body>
-    </html>
+    </html >
   )
 }

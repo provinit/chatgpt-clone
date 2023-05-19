@@ -14,6 +14,7 @@ const Sidebar = () => {
     session && query(collection(db, "users", session?.user?.email!, "chats"), orderBy("createdAt", "asc"))
   );
 
+
   return (
     <div className="p-2 flex flex-col h-screen">
       <div className="flex-1">
